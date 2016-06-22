@@ -1,0 +1,17 @@
+{
+    "name": "mileschou/todos-back",
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "MilesChou",
+            "email": "jangconan@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "~3.4.2"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.2",
+        "squizlabs/php_codesniffer": "^2.6"
+    }
+}

@@ -24,3 +24,7 @@ Desktop.ini
 .project
 .buildpath
 .settings
+
+# Composer files
+composer.phar
+/vendor/
