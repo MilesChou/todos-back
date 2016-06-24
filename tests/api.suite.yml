@@ -1,4 +1,7 @@
 class_name: ApiTester
 modules:
     enabled:
-        - \Helper\Api
+        - Db
+        - REST:
+            url: http://api:8080/
+            depends: PhpBrowser

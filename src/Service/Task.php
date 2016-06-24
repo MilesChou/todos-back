@@ -23,7 +23,7 @@ class Task
 
     public function find(int $id)
     {
-        $task = R::find('tasks', $id);
+        $task = R::findOne('tasks', $id);
 
         return $task;
     }

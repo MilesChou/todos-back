@@ -8,6 +8,14 @@ api:
   volumes:
     - .:/usr/src/app
   command: php -S 0.0.0.0:8080 -t ./public/
+tester:
+  build: .
+  working_dir: /usr/src/app
+  links:
+    - api:api
+    - database:database
+  volumes:
+    - .:/usr/src/app
 database:
   image: mariadb:5.5
   ports:
