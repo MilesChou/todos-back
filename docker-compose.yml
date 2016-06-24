@@ -3,6 +3,15 @@ api:
   ports:
     - 8080:8080
   working_dir: /usr/src/app
+  links:
+    - database:database
   volumes:
     - .:/usr/src/app
   command: php -S 0.0.0.0:8080 -t ./public/
+database:
+  image: mariadb:5.5
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_DATABASE: default
