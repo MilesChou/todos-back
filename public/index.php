@@ -4,25 +4,53 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-$app = new \Slim\App();
+RedBeanPHP\Facade::setup('mysql:host=database;dbname=default', 'root', 'password');
+
+// Configurations
+$config = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
+
+$app = new Slim\App($config);
 
 $app->get('/tasks', function (Request $request, Response $response, $args) {
-    return $response;
+    $taskService = new Todos\Service\Task();
+    $tasks = $taskService->getList();
+
+    return $response->withJson($tasks, 200);
 });
 
 $app->get('/tasks/{id}', function (Request $request, Response $response, $args) {
-    return $response;
+    $taskService = new Todos\Service\Task();
+    $task = $taskService->find($args['id']);
+
+    return $response->withJson($task, 200);
 });
 
 $app->post('/tasks', function (Request $request, Response $response, $args) {
+    $taskService = new Todos\Service\Task();
+    $data = $request->getParsedBody();
+
+    $taskService->create($data);
+
     return $response;
 });
 
 $app->put('/tasks/{id}', function (Request $request, Response $response, $args) {
+    $taskService = new Todos\Service\Task();
+    $data = $request->getParsedBody();
+
+    $taskService->update($args['id'], $data);
+
     return $response;
 });
 
 $app->delete('/tasks/{id}', function (Request $request, Response $response, $args) {
+    $taskService = new Todos\Service\Task();
+    $taskService->remove($args['id']);
+
     return $response;
 });
 
