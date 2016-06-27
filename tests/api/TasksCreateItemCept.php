@@ -6,6 +6,8 @@ $I->sendPOST('/tasks', [
     'title' => 'new',
     'description' => 'content',
 ]);
-
 $I->seeResponseCodeIs(200);
-$I->seeNumRecords(1, 'tasks', ['title' => 'new', 'description' => 'content']);
+$I->seeNumRecords(1, 'tasks', [
+    'title' => 'new',
+    'description' => 'content'
+]);
