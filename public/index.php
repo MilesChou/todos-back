@@ -4,7 +4,13 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-RedBeanPHP\Facade::setup('mysql:host=database;dbname=default', 'root', 'password');
+# DB Configurations
+$dbhost = 'database';
+$dbname = 'default';
+$dbuser = 'root';
+$dbpass = 'password';
+
+RedBeanPHP\Facade::setup("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
 // Configurations
 $config = [
