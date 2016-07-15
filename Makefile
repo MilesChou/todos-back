@@ -12,6 +12,7 @@ build:
 	docker build -t=$(IMAGE):$(VERSION) .
 
 start:
+	@docker-compose build
 	@docker-compose up -d
 
 stop:

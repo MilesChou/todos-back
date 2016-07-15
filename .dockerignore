@@ -1,6 +1,7 @@
 # Docker files
 .dockerignore
 docker-composer.yml
+Dockerfile
 
 # Git files
 .git
@@ -8,3 +9,6 @@ docker-composer.yml
 
 # Composer vendor folder
 vendor
+
+# Unnecessary files
+Makefile
