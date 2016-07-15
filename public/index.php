@@ -61,8 +61,6 @@ $app->delete('/tasks/{id}', function (Request $request, Response $response, $arg
 });
 
 $app->get('/', function (Request $request, Response $response) {
-    $setting = $this->get('settings');
-    var_dump($setting);
     $response->getBody()->write("Hello World!");
     return $response;
 });

@@ -10,7 +10,8 @@
     "require": {
         "php": ">=7.0",
         "slim/slim": "~3.4.2",
-        "gabordemooij/redbean": "~4.3.2"
+        "gabordemooij/redbean": "~4.3.2",
+        "vlucas/phpdotenv": "~2.3"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
