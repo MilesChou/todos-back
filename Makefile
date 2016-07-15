@@ -11,7 +11,13 @@ all: build
 build:
 	docker build -t=$(IMAGE):$(VERSION) .
 
-test:
+start:
+	@docker-compose up -d
+
+stop:
+	@docker-compose stop
+
+test: start
 	@docker-compose run --rm tester php vendor/bin/codecept run
 
 rebuild:
