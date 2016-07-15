@@ -1,14 +1,19 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Dotenv\Dotenv;
 
 require '../vendor/autoload.php';
 
-# DB Configurations
-$dbhost = 'database';
-$dbname = 'default';
-$dbuser = 'root';
-$dbpass = 'password';
+// Load .env file
+$dotenv = new Dotenv(__DIR__ . '/../');
+$dotenv->load();
+
+// DB Configurations
+$dbhost = getenv('DB_HOST');
+$dbname = getenv('DB_NAME');
+$dbuser = getenv('DB_USER');
+$dbpass = getenv('DB_PASS');
 
 RedBeanPHP\Facade::setup("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
