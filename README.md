@@ -39,7 +39,7 @@ chmod +x /usr/local/bin/docker-compose
 
 > The following commands require Make, Docker, Docker Compose
 
-Services Start
+Services Start, the service is listen on 127.0.0.0:8080 (see `docker-compose.yml`)
 
 ```bash
 make start
@@ -48,7 +48,7 @@ make start
 Services Stop
 
 ```bash
-make start
+make stop
 ```
 
 Services Test
