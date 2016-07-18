@@ -26,4 +26,4 @@ COPY ./public ./public
 
 # Apache2 setting
 RUN a2enmod rewrite
-RUN sed -i "s/^DocumentRoot.*/DocumentRoot \/var\/www\/html\/public/g" /etc/apache2/apache2.conf
+RUN sed -i "s/DocumentRoot.*/DocumentRoot \/var\/www\/html\/public/g" /etc/apache2/sites-enabled/000-default.conf

@@ -2,18 +2,17 @@
 IMAGE := $(shell basename $(shell pwd))
 VERSION := latest
 
-.PHONY: all build rebuild test
+.PHONY: all build start stop rebuild test
 
 # ------------------------------------------------------------------------------
 
 all: build
 
 build:
-	@docker build -t=$(IMAGE):$(VERSION) --file=Dockerfile --force-rm .
+	@docker build -t=$(IMAGE) --file=Dockerfile --force-rm .
 	@docker build -t=$(IMAGE):dev --file=Dockerfile.dev --force-rm .
 
-start:
-	@docker-compose build
+start: build
 	@docker-compose up -d
 
 stop:

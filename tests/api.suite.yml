@@ -3,5 +3,5 @@ modules:
     enabled:
         - Db
         - REST:
-            url: http://api:8080/
+            url: http://api/
             depends: PhpBrowser
