@@ -9,7 +9,7 @@ api:
     - .:/usr/src/app
   command: php -S 0.0.0.0:8080 -t ./public/
 tester:
-  build: .
+  image: todos-back:dev
   working_dir: /usr/src/app
   links:
     - api:api

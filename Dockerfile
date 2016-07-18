@@ -18,6 +18,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 COPY ./composer.json ./
 COPY ./composer.lock ./
+COPY ./.env.example ./
 RUN ./composer.phar install --no-dev
 
 COPY ./src ./src

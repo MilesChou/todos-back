@@ -2,6 +2,7 @@
 .dockerignore
 docker-composer.yml
 Dockerfile
+Dockerfile.dev
 
 # Git files
 .git

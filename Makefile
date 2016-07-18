@@ -9,7 +9,8 @@ VERSION := latest
 all: build
 
 build:
-	docker build -t=$(IMAGE):$(VERSION) .
+	@docker build -t=$(IMAGE):$(VERSION) --file=Dockerfile --force-rm .
+	@docker build -t=$(IMAGE):dev --file=Dockerfile.dev --force-rm .
 
 start:
 	@docker-compose build
@@ -20,6 +21,3 @@ stop:
 
 test: start
 	@docker-compose run --rm tester php vendor/bin/codecept run
-
-rebuild:
-	docker build -t=$(IMAGE):$(VERSION) --no-cache .
