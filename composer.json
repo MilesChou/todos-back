@@ -24,7 +24,8 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php -r \"if (!is_file('.env')) copy('.env.example', '.env');\""
+            "php -r \"if (!is_file('.env')) copy('.env.example', '.env');\"",
+            "php -r \"if (is_dir('.git')) copy('scripts/pre-commit', '.git/hooks/pre-commit');\""
         ]
     }
 }

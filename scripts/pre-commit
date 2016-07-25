@@ -1,0 +1,46 @@
+#!/bin/sh
+# Run PHP validation before commit
+#
+# Ensure installed extensions below:
+#     squizlabs/php_codesniffer~2.6.2
+#     codeception/codeception~2.2.3
+
+# get all file which will commit
+files=$(git diff --cached --name-only --diff-filter=ACM | grep ".php$")
+pass=true
+
+# run unit test
+echo ">>> Running Unit Test"
+php vendor/bin/codecept run unit --report --silent
+
+if [ "$?" != "0" ]; then
+    pass=false
+fi
+
+echo ">>> Unit Test finished"
+
+# run code sniffer
+echo ">>> Running Code Sniffer"
+
+if [ "$files" != "" ]; then
+    for file in ${files}; do
+        if [ "${file%%\/*}" != "tests" ]; then
+            php vendor/bin/phpcs --standard=PSR2 ${file};
+
+            if [ "$?" != "0" ]; then
+                pass=false
+            fi
+        fi
+    done
+fi
+
+echo ">>> Code Sniffer finished"
+
+# result
+if $pass; then
+    exit 0
+else
+    echo ""
+    echo "COMMIT FAILED!!"
+    exit 1
+fi
